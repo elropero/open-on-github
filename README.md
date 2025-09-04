@@ -1,4 +1,4 @@
-# Open on GitHub (VS Code Extension)
+# Open on GitHub Web (VS Code Extension)
 
 ## What it does
 
@@ -24,14 +24,26 @@
 
 ## Install (VSIX)
 
-- Build locally: `cd open-on-github && npx @vscode/vsce package` (outputs a `.vsix`).
-- Install: `code --install-extension open-on-github-*.vsix` or via Extensions view → … → Install from VSIX.
+- Build locally: `cd open-on-github && npx @vscode/vsce package` (outputs a `.vsix` named like `open-on-github-web-0.1.2.vsix`).
+- Install: `code --install-extension open-on-github-web-*.vsix` or via Extensions view → … → Install from VSIX.
 
 ## GitHub Release (CI)
 
-- Push a tag like `v0.1.0` to the repo. GitHub Actions will build `open-on-github.vsix` and attach it to the release.
+- Push a tag like `v0.1.0` to the repo. GitHub Actions will build `open-on-github-web.vsix` and attach it to the release.
 - Team can download the VSIX from the release and install it.
 
 ## Marketplace (optional)
 
 - Create a VS Code publisher, set `publisher` in `package.json`, then run `npx vsce publish` (requires a Marketplace PAT). See https://code.visualstudio.com/api/working-with-extensions/publishing-extension.
+
+## CI auto-publish
+
+- Set repo secret `VSCE_PAT` with a VS Code Marketplace Personal Access Token (scope: Marketplace > Manage).
+- Optional: Set `OVSX_TOKEN` to also publish to Open VSX for VSCodium users.
+- Tag a release like `v0.1.0` or use "Run workflow" on the "Publish to Marketplaces" action.
+- The workflow publishes from `open-on-github/package.json` using its `publisher` and `version`.
+
+## Create a publisher
+
+- VS Code Marketplace: https://marketplace.visualstudio.com/manage → Create Publisher (ID should match `publisher` in `package.json`, e.g., `elropero`).
+- Generate PAT: https://dev.azure.com → User settings → Personal Access Tokens → New Token → Scopes: Marketplace (Acquire, Publish), Packaging (Read).
