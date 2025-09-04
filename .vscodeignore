@@ -1,0 +1,11 @@
+/.vscode/
+/.git/
+/.github/
+**/*.map
+**/*.ts
+**/*.tsbuildinfo
+node_modules/**
+test/**
+scripts/**
+**/.DS_Store
+

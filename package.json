@@ -1,0 +1,77 @@
+{
+  "name": "open-on-github",
+  "displayName": "Open on GitHub",
+  "description": "Open the current file on GitHub for the current branch.",
+  "version": "0.1.0",
+  "publisher": "elropero",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elropero/open-on-github.git"
+  },
+  "keywords": [
+    "github",
+    "open",
+    "repo",
+    "branch",
+    "context-menu"
+  ],
+  "scripts": {
+    "package": "vsce package",
+    "publish:marketplace": "vsce publish"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:openOnGithub.openFile"
+  ],
+  "main": "./extension.js",
+  "extensionDependencies": [
+    "vscode.git"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "openOnGithub.openFile",
+        "title": "Open on GitHub",
+        "icon": "$(github)",
+        "category": "GitHub"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "openOnGithub.openFile",
+          "group": "navigation",
+          "when": "resourceScheme == file"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "openOnGithub.openFile",
+          "group": "navigation",
+          "when": "resourceScheme == file"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "openOnGithub.openFile",
+          "group": "navigation",
+          "when": "resourceScheme == file",
+          "alt": "openOnGithub.openFile"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "openOnGithub.openFile",
+        "key": "ctrl+alt+g",
+        "mac": "cmd+alt+g",
+        "when": "editorTextFocus && resourceScheme == file"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Extension (Repo Root)",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "${workspaceFolder}/.."
+      ]
+    },
+    {
+      "name": "Run Extension (Pick Repo Path)",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "${input:repoPath}"
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "repoPath",
+      "type": "promptString",
+      "description": "Path to the Git repo to open in the Extension Development Host",
+      "default": "${workspaceFolder}/.."
+    }
+  ]
+}
